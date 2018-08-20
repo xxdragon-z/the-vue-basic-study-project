@@ -62,7 +62,7 @@
     name: "FormDemoVue",
     data() {
       return {
-        gender: '',
+        gender:  [{text: '男', id: 1}, {text: '女', id: 2}],
         cityInfo:[]
           // [{label: '123', value: 1, children: [{label: '123', value: 1,children:[{label: '123', value: 1}]}]}]
       }
