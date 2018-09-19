@@ -12,10 +12,6 @@
   export default {
     name: "EchartsTest",
     data() {
-      var autoResize=function(){
-        document.getElementById('echartLine').style.width= window.innerWidth
-        document.getElementById('echartLine').style.height=window.innerHeight
-      }
       // var labelOption = {
       //   normal: {
       //     show: true,
@@ -54,13 +50,6 @@
     },
     mounted() {
       this.echartTable = echarts.init(document.getElementById('echartLine'))
-      let test=this.echartTable
-      window.onresize=function(){
-        document.getElementById('echartLine').style.width= window.innerWidth
-        document.getElementById('echartLine').style.height=window.innerHeight
-        test.resize()
-      }
-
       if (echartLine)
         this.initEchart()
     },
@@ -94,7 +83,6 @@
           },
           xAxis: {
             type: 'category',
-            //此值决定当使用柱状图时，每一组数据自动分组自动适应长度或者是宽度
             boundaryGap: false,
             data: this.xData
           },
@@ -103,22 +91,36 @@
           },
           series: this.echartData
         })
+        let test=this.echartTable
+        this.echartTable.on('click',params=>{
+          console.info('seriesIndex:'+params.seriesIndex)
+          console.info('seriesName:'+params.seriesName)
+          console.info('index:'+params.dataIndex)
+          console.info('name:'+params.name)
+        })
+        window.onresize=function(){
+          document.getElementById('echartLine').style.width= window.innerWidth
+          document.getElementById('echartLine').style.height=window.innerHeight
+          test.resize()
+        }
       },
       echartChange: function () {
         if (this.type == 'line') {
+          console.info('bar')
           this.type = 'bar'
           this.echartData.forEach((item, index) => {
             this.echartData[index].type = 'bar'
           })
         }
         else {
+          console.info('line')
           this.type = 'line'
           this.echartData.forEach((item, index) => {
             this.echartData[index].type = 'line'
           })
         }
         switch (this.type) {
-          case'line':
+          case 'line':
             this.echartTable.setOption({
               xAxis: {
                 type: 'category',
@@ -128,10 +130,11 @@
               series: this.echartData
             })
             break
-          case'bar':
+          case 'bar':
             this.echartTable.setOption({
               xAxis: {
                 type: 'category',
+                //此值决定当使用柱状图时，每一组柱状数据自动分组自动适应长度或者是宽度
                 boundaryGap: true,
                 data: this.xData
               },
