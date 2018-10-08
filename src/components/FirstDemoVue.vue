@@ -3,25 +3,37 @@
     <span>哟哟哟!{{hello}}</span>
     <ol>
       <!--<li id="uls" v-for="c in categoryList">{{c}}</li>-->
-      <li v-bind:title="msg">{{msg}}</li>
+      <!--<li v-bind:title="msg">{{msg}}</li>-->
+      <li>
+        <span  id="lis">{{text.name}}</span>
+      </li>
     </ol>
 
   </div>
 </template>
 <script>
   import API from '../api/FirstAPI'
-
   export default {
     name: 'FirstDemoVue',
     data() {
       return {
-        msg:'',
-        categoryList:[],
-        hello: '第一个组件'
+        text:{name:'ceshi'},
+        msg: '',
+        categoryList: [],
+        hello: '第一个组件',
+        texts:[{name:'1'},{name:'2'}],
+        index:0
       }
     },
     methods: {
-      initData:function(data){
+      animates:function(){
+        if(this.index<this.texts.length-1)
+          this.index++
+        else
+          this.index=0
+        this.text.name=this.texts[this.index].name
+      },
+      initData: function (data) {
         this.msg = data.msg
         this.categoryList = data.data
       },
@@ -34,6 +46,7 @@
       }
     },
     mounted() {
+      setInterval(this.animates,2000)
       this.flushData()
     },
     loading: false

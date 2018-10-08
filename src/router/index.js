@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TablePage from '@/components/TablePage'
-import FirstDemoVue from '@/components/FirstDemoVue'
-import FormDemoVue from '@/components/FormDemoVue'
-import MainPage from '@/components/MainVue'
 import App from '@/App'
 
 Vue.use(Router)
@@ -13,11 +9,11 @@ let routers = new Router({
     {
       path: '/',
       name: 'MainPage',
-      component: MainPage,
+      component: resolve=>require(['@/components/MainVue'],resolve),
       children: [
-        {path: '/TablePage', name: 'TablePage', component: TablePage},
-        {path: '/FirstDemoVue', name: 'FirstDemoVue', component: FirstDemoVue},
-        {path: '/FormDemoVue', name: 'FormDemoVue', component: FormDemoVue}
+        {path: '/TablePage', name: 'TablePage', component: resolve=>require(['@/components/TablePage'],resolve)},
+        {path: '/FirstDemoVue', name: 'FirstDemoVue', component: resolve=>require(['@/components/FirstDemoVue'],resolve)},
+        {path: '/FormDemoVue', name: 'FormDemoVue', component: resolve=>require(['@/components/FormDemoVue'],resolve)}
       ]
     },
     // {
