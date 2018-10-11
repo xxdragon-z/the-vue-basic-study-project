@@ -1,14 +1,11 @@
 import axios from 'axios'
-
 axios.defaults.withCredentials = true
-export const getRequest = (url, params) => {
-  console.info("开始调用：url=" + url)
-  if (url) {
-    if (!params)
-      params = {"msg": null};
-    return axios.get(url, {params: params}).then(result => result.data)
+// let base='/'
+export const getRequest = (url) => {
+  console.info(url)
+    return axios.get(url).then(result => result.data)
   }
-}
+
 export const PUT = (url, params) => {
   return axios.put(url, params).then(res => res.data)
 }

@@ -69,6 +69,7 @@
     },
     methods: {
       initCity: function(){
+        this.$store.commit('add')
         info.forEach(c=>{
          let city={label:c.label,value:c.value,children:[]}
          c.children.forEach(c2=>{
