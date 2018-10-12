@@ -16,7 +16,7 @@
                 <el-menu-item index="/FirstDemoVue">工作台</el-menu-item>
                 <el-menu-item index="/FormDemoVue">企业管理</el-menu-item>
                 <el-menu-item index="/TablePage">订单管理</el-menu-item>
-                <el-menu-item index="/EchartsTest">图标测试</el-menu-item>
+                <el-menu-item index="/TreeTest">图标测试</el-menu-item>
               </el-menu>
             </el-col>
           </el-row>
