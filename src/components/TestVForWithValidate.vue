@@ -52,11 +52,11 @@
             console.info(val)
           },
           initParams(){
-            // let _this = this;
-            // _this.dataList.forEach((a,b)=>{
-            // _this.moduleParams[a.field]=""+b
-            // })
-            // console.info("module：",_this.moduleParams)
+            let _this = this;
+            _this.dataList.forEach((a,b)=>{
+            _this.moduleParams[a.field]=""+b
+            })
+            console.info("module：",_this.moduleParams)
           }
       }
     }
