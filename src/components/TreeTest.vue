@@ -67,6 +67,7 @@
       showCheckedNodesList(){
         console.info('选中 节点的长度 ：'+this.$refs.tree.getCheckedNodes().length)
         console.info(this.$refs.tree.getCheckedNodes())
+
       }
     }
   }
