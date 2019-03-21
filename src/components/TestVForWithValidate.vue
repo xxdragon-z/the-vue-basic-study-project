@@ -36,11 +36,12 @@
               {name:'年龄',field:'age',value:''},
               {name:'手机号',field:'phone',value:''}],
             moduleParams:{
-              name:''
             }
           }
       },
-      beforeMount(){ this.initParams()},
+      beforeMount(){
+          // this.initParams()
+      },
       created(){
 
       },
@@ -53,6 +54,7 @@
           },
           initParams(){
             let _this = this;
+            //下面的东西可写可不写 ，最好写上
             _this.dataList.forEach((a,b)=>{
             _this.moduleParams[a.field]=""+b
             })
