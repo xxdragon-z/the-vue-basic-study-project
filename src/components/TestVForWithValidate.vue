@@ -2,7 +2,7 @@
     <div id="bodys">
       <el-form :model="moduleParams" ref="form" :rules="moduleRules">
         <el-form-item v-for="(item,index) in dataList" :key="index" :prop="item.field" :label="item.name" >
-          <el-input v-model="moduleParams[item.field]" @change="test"></el-input>
+          <el-input v-model="moduleParams[item.field]" @=change"test"></el-input>
         </el-form-item>
       </el-form>
     </div>
